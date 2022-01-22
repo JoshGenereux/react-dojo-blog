@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import {logDOM} from "@testing-library/react";
 
 const useFetch = (url) => {
     const [data, setData] = useState(null)
@@ -24,6 +25,7 @@ const useFetch = (url) => {
                     setIsPending(false)
                 })
         }, 1000);
+        return () => console.log('cleanup')
     }, [url])
 
     return { data, isLoading, error}
